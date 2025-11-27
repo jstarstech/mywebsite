@@ -1,12 +1,12 @@
-import "../app/globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import { useState } from "react";
+import '../styles/globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import Link from 'next/link'
+import { useState } from 'react'
 
-import { Menu, X } from "lucide-react";
+import { Menu, X } from 'lucide-react'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 /* export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,19 +15,15 @@ const inter = Inter({ subsets: ["latin"] });
  */
 
 const navigation = [
-  { name: "Home", id: "/" },
-  { name: "Blog", id: "/blog" },
-  { name: "Portfolio", id: "/portfolio" },
-  { name: "Contact", id: "/contact" },
-];
+  { name: 'Home', id: '/' },
+  { name: 'Blog', id: '/blog' },
+  { name: 'Portfolio', id: '/portfolio' },
+  { name: 'Contact', id: '/contact' },
+]
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [activeSection, setActiveSection] = useState("home");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [activeSection, setActiveSection] = useState('home')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <html lang="en">
@@ -50,8 +46,8 @@ export default function RootLayout({
                       onClick={() => setActiveSection(item.id)}
                       className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                         activeSection === item.id
-                          ? "text-purple-400"
-                          : "text-gray-300 hover:text-white"
+                          ? 'text-purple-400'
+                          : 'text-gray-300 hover:text-white'
                       }`}
                     >
                       {item.name}
@@ -78,13 +74,13 @@ export default function RootLayout({
                       href={item.id}
                       key={item.id}
                       onClick={() => {
-                        setActiveSection(item.id);
-                        setMobileMenuOpen(false);
+                        setActiveSection(item.id)
+                        setMobileMenuOpen(false)
                       }}
                       className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                         activeSection === item.id
-                          ? "text-purple-400 bg-slate-700"
-                          : "text-gray-300 hover:text-white hover:bg-slate-700"
+                          ? 'text-purple-400 bg-slate-700'
+                          : 'text-gray-300 hover:text-white hover:bg-slate-700'
                       }`}
                     >
                       {item.name}
@@ -99,13 +95,11 @@ export default function RootLayout({
 
           <footer className="bg-slate-900/80 backdrop-blur-md border-t border-purple-500/20 py-8">
             <div className="max-w-7xl mx-auto px-4 text-center">
-              <p className="text-gray-400">
-                © 2024 Your Name. All rights reserved.
-              </p>
+              <p className="text-gray-400">© 2024 Your Name. All rights reserved.</p>
             </div>
           </footer>
         </div>
       </body>
     </html>
-  );
+  )
 }

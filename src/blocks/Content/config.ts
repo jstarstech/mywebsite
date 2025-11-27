@@ -5,9 +5,12 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  BlocksFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { MainCallToAction } from '../MainCallToAction/config'
+import { CallToAction } from '../CallToAction/config'
 
 const columnFields: Field[] = [
   {
@@ -43,6 +46,7 @@ const columnFields: Field[] = [
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
+          BlocksFeature({ blocks: [MainCallToAction, CallToAction] }),
         ]
       },
     }),
