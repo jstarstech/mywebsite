@@ -1,4 +1,5 @@
 import type { Metadata } from 'next/types'
+import { Search as SearchIcon } from 'lucide-react'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 import configPromise from '@payload-config'
@@ -64,7 +65,10 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageClient />
       <div className="container mx-auto mb-16">
         <div className="prose dark:prose-invert max-w-none text-center">
-          <h1 className="mb-8 lg:mb-16">Search</h1>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">Search</h2>
+          <p className="text-gray-400 text-center mb-8">
+            Projects, thoughts, tutorials, and insights
+          </p>
 
           <div className="max-w-[50rem] mx-auto">
             <Search />
