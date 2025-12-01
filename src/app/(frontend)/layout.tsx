@@ -37,9 +37,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <nav className="fixed w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-purple-500/20">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+                  <Link
+                    href="/"
+                    className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent"
+                  >
                     Maksim
-                  </div>
+                  </Link>
                   <div className="hidden md:flex space-x-8">
                     <Link
                       className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-300 hover:text-white"
