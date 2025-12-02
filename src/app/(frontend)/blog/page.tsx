@@ -24,6 +24,7 @@ export default async function Page() {
       slug: true,
       categories: true,
       meta: true,
+      publishedAt: true,
     },
   })
 
@@ -31,8 +32,8 @@ export default async function Page() {
     <div className="pt-24 pb-24">
       <section className="px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">Posts</h2>
-          <p className="text-gray-400 text-center mb-12">Recent posts and work</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">Blog</h2>
+          <p className="text-gray-400 text-center mb-12">Thoughts, tutorials, and insights</p>
 
           <CollectionArchive posts={posts.docs} relationTo="blog" />
 
