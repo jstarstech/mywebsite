@@ -121,11 +121,12 @@ export default async function Post({ params: paramsPromise }: Args) {
                 <time dateTime={post.publishedAt}>{formattedDate}</time>
               </div>
             )}
-
-            <div className="flex items-center">
-              <Clock size={18} className="mr-2" />
-              <span>10 min read</span>
-            </div>
+            {post.readTime !== null && (
+              <div className="flex items-center">
+                <Clock size={18} className="mr-2" />
+                <span>{post.readTime} min read</span>
+              </div>
+            )}
           </div>
         </div>
 

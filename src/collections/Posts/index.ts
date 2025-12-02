@@ -17,6 +17,7 @@ import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import { updateReadTime } from './hooks/updateReadTime'
 
 import {
   MetaDescriptionField,
@@ -99,6 +100,13 @@ export const Posts: CollectionConfig<'posts'> = {
               }),
               label: false,
               required: true,
+            },
+            {
+              name: 'readTime',
+              type: 'number',
+              admin: {
+                hidden: true,
+              },
             },
           ],
           label: 'Content',
@@ -221,6 +229,7 @@ export const Posts: CollectionConfig<'posts'> = {
     afterChange: [revalidatePost],
     afterRead: [populateAuthors],
     afterDelete: [revalidateDelete],
+    beforeChange: [updateReadTime('content')],
   },
   versions: {
     drafts: {

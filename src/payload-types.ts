@@ -242,6 +242,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
+  readTime?: number | null;
   relatedPosts?: (number | Post)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
@@ -1212,6 +1213,7 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
+  readTime?: T;
   relatedPosts?: T;
   categories?: T;
   meta?:
