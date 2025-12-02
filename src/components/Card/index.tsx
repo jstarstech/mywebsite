@@ -8,7 +8,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'publishedAt'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -29,20 +29,31 @@ export const Card: React.FC<{
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/${relationTo}/${slug}`
 
+  const formattedDate =
+    doc?.publishedAt === undefined
+      ? ''
+      : new Intl.DateTimeFormat('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }).format(new Date(doc?.publishedAt || ''))
+
   return (
     <article
       ref={card.ref}
       className={cn(
-        'bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all hover:transform hover:scale-105',
+        'bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all hover:transform hover:scale-105 flex flex-col',
         className,
       )}
     >
-      {!metaImage && <div className="w-full h-48 object-cover">No image</div>}
+      {!metaImage && (
+        <div className="w-full h-48 bg-linear-to-br/oklab from-indigo-900 via-purple-800 to-rose-900"></div>
+      )}
       {metaImage && typeof metaImage !== 'string' && (
         <Media resource={metaImage} htmlElement={null} imgClassName="w-full h-48 object-cover" />
       )}
 
-      <div className="p-6">
+      <div className="grow flex flex-col p-6">
         <h3 className="text-xl font-bold text-white mb-2">
           {titleToUse && (
             <Link className="not-prose" href={href} ref={link.ref}>
@@ -83,6 +94,12 @@ export const Card: React.FC<{
             </>
           )}
         </div>
+
+        {doc?.publishedAt && (
+          <>
+            <div className="text-gray-400 text-sm mt-auto">{formattedDate}</div>
+          </>
+        )}
       </div>
     </article>
   )
