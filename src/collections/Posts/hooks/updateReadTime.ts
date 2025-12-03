@@ -26,6 +26,11 @@ export const updateReadTime: (fieldName: string) => CollectionBeforeChangeHook =
         }),
       })
 
+      // In case new post is created without content
+      if (data?.content === undefined || data.content.length === 0) {
+        return
+      }
+
       headlessEditor.setEditorState(headlessEditor.parseEditorState(data.content))
 
       const textContent = headlessEditor.getEditorState().read(() => {
