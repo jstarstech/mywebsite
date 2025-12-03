@@ -78,11 +78,12 @@ export const Card: React.FC<{
                       const isLast = index === categories.length - 1
 
                       return (
-                        <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">
-                          <Fragment key={index}>
-                            {categoryTitle}
-                            {!isLast && <Fragment>, &nbsp;</Fragment>}
-                          </Fragment>
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm"
+                        >
+                          {categoryTitle}
+                          {!isLast && <Fragment>, &nbsp;</Fragment>}
                         </span>
                       )
                     }
