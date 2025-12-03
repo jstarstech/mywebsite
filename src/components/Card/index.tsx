@@ -62,7 +62,7 @@ export const Card: React.FC<{
           )}
         </h3>
         <p className="text-gray-300 mb-4">
-          {description && <>{description && <p>{sanitizedDescription}</p>}</>}
+          {description && <>{description && <>{sanitizedDescription}</>}</>}
         </p>
         <div className="flex flex-wrap gap-2">
           {showCategories && hasCategories && (
