@@ -577,6 +577,7 @@ export interface ArchiveBlock {
   } | null;
   populateBy?: ('collection' | 'selection') | null;
   relationTo?: 'posts' | null;
+  relationToSlug?: string | null;
   categories?: (number | Category)[] | null;
   limit?: number | null;
   selectedDocs?:
@@ -1188,6 +1189,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   introContent?: T;
   populateBy?: T;
   relationTo?: T;
+  relationToSlug?: T;
   categories?: T;
   limit?: T;
   selectedDocs?: T;

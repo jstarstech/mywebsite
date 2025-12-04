@@ -57,6 +57,12 @@ export const Archive: Block = {
       ],
     },
     {
+      name: 'relationToSlug',
+      type: 'text',
+      defaultValue: 'posts',
+      label: 'First url segment for posts urls',
+    },
+    {
       name: 'categories',
       type: 'relationship',
       admin: {
