@@ -11,9 +11,13 @@ const labelVariants = cva(
 
 const Label: React.FC<
   { ref?: React.Ref<HTMLLabelElement> } & React.ComponentProps<typeof LabelPrimitive.Root> &
-    VariantProps<typeof labelVariants>
-> = ({ className, ref, ...props }) => (
-  <LabelPrimitive.Root className={cn(labelVariants(), className)} ref={ref} {...props} />
+    VariantProps<typeof labelVariants> & { customClassName?: string }
+> = ({ className, customClassName, ref, ...props }) => (
+  <LabelPrimitive.Root
+    className={customClassName !== '' ? customClassName : cn(labelVariants(), className)}
+    ref={ref}
+    {...props}
+  />
 )
 
 export { Label }
