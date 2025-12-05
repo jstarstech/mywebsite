@@ -24,6 +24,10 @@ export const hero: Field = {
           value: 'none',
         },
         {
+          label: 'Page Hero',
+          value: 'pageHero',
+        },
+        {
           label: 'High Impact',
           value: 'highImpact',
         },
@@ -37,6 +41,13 @@ export const hero: Field = {
         },
       ],
       required: true,
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
+      admin: {
+        condition: (_, { type } = {}) => ['pageHero'].includes(type),
+      },
     },
     {
       name: 'richText',
