@@ -15,9 +15,7 @@ export const PageHero: React.FC<PageHeroType> = (prop) => {
   return (
     <div className="pt-10 pb-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          {page.meta?.title}
-        </h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">{page.title}</h2>
         {subtitle !== '' && <p className="text-gray-400 text-center">{subtitle}</p>}
       </div>
 
