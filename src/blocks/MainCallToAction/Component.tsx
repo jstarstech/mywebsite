@@ -5,7 +5,7 @@ import type { MainCallToActionBlock as MCTABlockProps } from '@/payload-types'
 
 export const MainCallToActionBlock: React.FC<MCTABlockProps> = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 -mt-44 -mb-24">
+    <section className="min-h-screen flex items-center justify-center px-4 -mt-32 -mb-24">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
           Hi, I&apos;m
