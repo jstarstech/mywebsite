@@ -73,6 +73,7 @@ export interface Config {
     code: CodeBlock;
     archive: ArchiveBlock;
     mediaBlock: MediaBlock;
+    banner: BannerBlock;
   };
   collections: {
     pages: Page;
@@ -163,7 +164,7 @@ export interface UserAuthOperations {
  * via the `definition` "Column".
  */
 export interface Column {
-  content?: (ArchiveBlock | CodeBlock | FormBlock | MediaBlock)[] | null;
+  content?: (ArchiveBlock | CodeBlock | FormBlock | MediaBlock | BannerBlock)[] | null;
   columnWidth: 'auto' | '4/5' | '3/4' | '2/3' | '1/2' | '1/3' | '1/4' | '1/5';
   id?: string | null;
   blockName?: string | null;
@@ -646,6 +647,31 @@ export interface MediaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerBlock".
+ */
+export interface BannerBlock {
+  style: 'info' | 'warning' | 'error' | 'success';
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'banner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Row".
  */
 export interface Row {
@@ -661,7 +687,7 @@ export interface Row {
  */
 export interface Section {
   row?: Row[] | null;
-  bg?: ('bg-primary' | 'bg-secondary' | 'bg-black' | 'bg-white') | null;
+  bg?: ('none' | 'bg-primary' | 'bg-secondary' | 'bg-black' | 'bg-white') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'section';
@@ -725,6 +751,7 @@ export interface Page {
     | ArchiveBlock
     | FormBlock
     | Section
+    | BannerBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1162,6 +1189,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         section?: T | SectionSelect<T>;
+        banner?: T | BannerBlockSelect<T>;
       };
   meta?:
     | T
@@ -1277,6 +1305,16 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface SectionSelect<T extends boolean = true> {
   row?: T | {};
   bg?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerBlock_select".
+ */
+export interface BannerBlockSelect<T extends boolean = true> {
+  style?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -1849,31 +1887,6 @@ export interface TaskSchedulePublish {
     user?: (number | null) | User;
   };
   output?: unknown;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BannerBlock".
- */
-export interface BannerBlock {
-  style: 'info' | 'warning' | 'error' | 'success';
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'banner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
