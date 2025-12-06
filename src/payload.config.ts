@@ -16,6 +16,13 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { Column } from './blocks/Column/config'
+import { Row } from './blocks/Row/config'
+import { Section } from './blocks/Section/config'
+import { FormBlock } from './blocks/Form/config'
+import { Code } from './blocks/Code/config'
+import { Archive } from './blocks/ArchiveBlock/config'
+import { MediaBlock } from './blocks/MediaBlock/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -57,6 +64,7 @@ export default buildConfig({
       ],
     },
   },
+  blocks: [Column, Row, Section, FormBlock, Code, Archive, MediaBlock],
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: postgresAdapter({
