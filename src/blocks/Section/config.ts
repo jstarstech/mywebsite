@@ -16,6 +16,7 @@ export const Section: Block = {
       type: 'select',
       label: 'Background Color',
       options: [
+        { value: 'none', label: 'None' },
         { value: 'bg-primary', label: 'Primary Color' },
         { value: 'bg-secondary', label: 'Secondary Color' },
         { value: 'bg-black', label: 'Black' },
