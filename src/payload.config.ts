@@ -24,6 +24,7 @@ import { Code } from './blocks/Code/config'
 import { Archive } from './blocks/ArchiveBlock/config'
 import { MediaBlock } from './blocks/MediaBlock/config'
 import { Banner } from './blocks/Banner/config'
+import { ContactsInfo } from './blocks/ContactsInfo/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -65,7 +66,7 @@ export default buildConfig({
       ],
     },
   },
-  blocks: [Column, Row, Section, FormBlock, Code, Archive, MediaBlock, Banner],
+  blocks: [Column, Row, Section, FormBlock, Code, Archive, MediaBlock, Banner, ContactsInfo],
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: postgresAdapter({

@@ -74,6 +74,7 @@ export interface Config {
     archive: ArchiveBlock;
     mediaBlock: MediaBlock;
     banner: BannerBlock;
+    contactInfo: ContactsInfoBlock;
   };
   collections: {
     pages: Page;
@@ -164,7 +165,7 @@ export interface UserAuthOperations {
  * via the `definition` "Column".
  */
 export interface Column {
-  content?: (ArchiveBlock | CodeBlock | FormBlock | MediaBlock | BannerBlock)[] | null;
+  content?: (ArchiveBlock | CodeBlock | FormBlock | MediaBlock | BannerBlock | ContactsInfoBlock)[] | null;
   columnWidth: 'auto' | '4/5' | '3/4' | '2/3' | '1/2' | '1/3' | '1/4' | '1/5';
   id?: string | null;
   blockName?: string | null;
@@ -669,6 +670,15 @@ export interface BannerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'banner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactsInfoBlock".
+ */
+export interface ContactsInfoBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactInfo';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

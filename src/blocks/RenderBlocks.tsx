@@ -11,6 +11,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { Section } from '@/blocks/Section/Component'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CodeBlock } from '@/blocks/Code/Component'
+import { ContactsInfoBlock } from './ContactsInfo/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +23,7 @@ const blockComponents = {
   section: Section,
   code: CodeBlock,
   banner: BannerBlock,
+  contactInfo: ContactsInfoBlock,
 }
 
 export const RenderBlocks: React.FC<{
