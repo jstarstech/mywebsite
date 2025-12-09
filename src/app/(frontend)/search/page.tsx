@@ -63,7 +63,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   return (
     <div className="pt-24 pb-24">
       <PageClient />
-      <div className="container mx-auto mb-16">
+      <div className="container max-w-6xl mx-auto mb-16">
         <div className="prose dark:prose-invert max-w-none text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">Search</h2>
           <p className="text-gray-400 text-center mb-8">
@@ -76,7 +76,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
       </div>
 
-      <div className="container mx-auto">
+      <div className="container max-w-6xl mx-auto">
         {posts.totalDocs > 0 ? (
           <CollectionArchive posts={posts.docs as CardPostData[]} />
         ) : (
