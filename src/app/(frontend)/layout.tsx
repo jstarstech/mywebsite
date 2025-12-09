@@ -12,6 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import LogoImg from '@/components/LogoImg'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -41,7 +42,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     href="/"
                     className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent"
                   >
-                    Maksim
+                    <LogoImg size={48} />
                   </Link>
                   <div className="hidden md:flex space-x-8">
                     <Link
