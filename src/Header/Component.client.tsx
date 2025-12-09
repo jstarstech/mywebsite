@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
-import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
+import LogoImg from '@/components/LogoImg'
 
 interface HeaderClientProps {
   data: Header
@@ -37,7 +37,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/">
-            <Logo loading="eager" priority="high" className="invert dark:invert-0" />
+            <LogoImg size={48} />
           </Link>
 
           <HeaderNav data={data} />
