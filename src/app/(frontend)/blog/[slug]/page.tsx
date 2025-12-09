@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { ArrowLeft, Clock, Calendar, User } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, User, Linkedin, X, Facebook } from 'lucide-react'
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp, FaXTwitter } from 'react-icons/fa6'
 
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
@@ -11,13 +12,10 @@ import RichText from '@/components/RichText'
 import { Media } from '@/components/Media'
 
 import type { Post } from '@/payload-types'
-
-import { PostHero } from '@/heros/PostHero'
+import config from '@/payload.config'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { formatAuthors } from '@/utilities/formatAuthors'
-import { formatDateTime } from '@/utilities/formatDateTime'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -69,6 +67,11 @@ export default async function Post({ params: paramsPromise }: Args) {
           month: 'long',
           day: 'numeric',
         }).format(new Date(post?.publishedAt || ''))
+
+  const serverURL = process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000'
+
+  const message = encodeURIComponent(`Hi, I wanted to share this post with you: ${serverURL + url}`)
+
   return (
     <section className="min-h-screen py-20 px-4">
       <div className="max-w-4xl mx-auto">
@@ -148,15 +151,21 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="mt-12 pt-8 border-t border-purple-500/20">
           <h3 className="text-xl font-bold text-white mb-4">Share this post</h3>
           <div className="flex space-x-4">
-            <button className="px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors border border-purple-500/30">
-              Twitter
-            </button>
-            <button className="px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors border border-purple-500/30">
-              LinkedIn
-            </button>
-            <button className="px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors border border-purple-500/30">
-              Facebook
-            </button>
+            <Link href={`https://x.com/intent/tweet?url=${message}`} target="_blank">
+              <FaXTwitter className="text-purple-400" size={44} />
+            </Link>
+            <Link href={`https://www.facebook.com/sharer/sharer.php?u=${message}`} target="_blank">
+              <FaFacebookF className="text-purple-400" size={44} />
+            </Link>
+            <Link href={`https://api.whatsapp.com/send?text=${message}`} target="_blank">
+              <FaWhatsapp className="text-purple-400" size={44} />
+            </Link>
+            <Link
+              href={`https://www.linkedin.com/shareArticle?mini=true&url=${message}`}
+              target="_blank"
+            >
+              <FaLinkedinIn className="text-purple-400" size={44} />
+            </Link>
           </div>
         </div>
 
