@@ -1,12 +1,11 @@
 'use client'
 
 import React from 'react'
-
-import type { Header as HeaderType } from '@/payload-types'
-
-import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
+
+import type { Header as HeaderType } from '@/payload-types'
+import { CMSLink } from '@/components/Link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/utilities/ui'
 
@@ -56,26 +55,6 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         <span className="sr-only">Search</span>
         <SearchIcon className="w-5 text-primary" />
       </Link>
-
-      <button className="md:hidden text-gray-300 hover:text-white">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-menu"
-          aria-hidden="true"
-        >
-          <path d="M4 5h16"></path>
-          <path d="M4 12h16"></path>
-          <path d="M4 19h16"></path>
-        </svg>
-      </button>
     </nav>
   )
 }

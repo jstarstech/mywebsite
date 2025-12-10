@@ -8,6 +8,8 @@ import type { Header } from '@/payload-types'
 
 import { HeaderNav } from './Nav'
 import LogoImg from '@/components/LogoImg'
+import { MobileMenu } from './Nav/MobileMenu'
+import { Menu, X } from 'lucide-react'
 
 interface HeaderClientProps {
   data: Header
@@ -16,6 +18,7 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
 
@@ -41,8 +44,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </Link>
 
           <HeaderNav data={data} />
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="sm:hidden text-gray-300 hover:text-white"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      <MobileMenu data={data} open={mobileMenuOpen} close={() => setMobileMenuOpen(false)} />
     </header>
   )
 }
