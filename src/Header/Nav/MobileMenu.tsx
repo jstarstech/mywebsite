@@ -1,8 +1,10 @@
 import React from 'react'
-import { CMSLink } from '@/components/Link'
-
-import type { Header as HeaderType } from '@/payload-types'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
+import { cn } from '@/utilities/ui'
+
+import { CMSLink } from '@/components/Link'
+import type { Header as HeaderType } from '@/payload-types'
 
 export const MobileMenu = ({
   data,
@@ -58,6 +60,18 @@ export const MobileMenu = ({
                 </span>
               )
             })}
+            <Link
+              onClick={() => {
+                close()
+              }}
+              href="/search"
+              className={cn(
+                'px-3 py-2 rounded-md text-base font-medium transition-colors text-gray-300 hover:text-white flex items-center gap-2',
+                pathname?.startsWith('/search') && 'text-purple-400 hover:text-purple-400',
+              )}
+            >
+              Search
+            </Link>
           </div>
         </nav>
       )}
