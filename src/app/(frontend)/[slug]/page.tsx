@@ -61,7 +61,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="container max-w-6xl mx-auto pt-16 pb-24">
+    <article className="h-dvh max-w-6xl mx-auto pt-16 pb-12">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
