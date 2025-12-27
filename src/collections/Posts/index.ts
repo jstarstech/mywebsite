@@ -72,6 +72,7 @@ export const Posts: CollectionConfig<'posts'> = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       type: 'tabs',
@@ -82,6 +83,7 @@ export const Posts: CollectionConfig<'posts'> = {
               name: 'heroImage',
               type: 'upload',
               relationTo: 'media',
+              localized: true,
             },
             {
               name: 'content',
@@ -100,6 +102,7 @@ export const Posts: CollectionConfig<'posts'> = {
               }),
               label: false,
               required: true,
+              localized: true,
             },
             {
               name: 'readTime',

@@ -48,6 +48,7 @@ export const hero: Field = {
       admin: {
         condition: (_, { type } = {}) => ['pageHero'].includes(type),
       },
+      localized: true,
     },
     {
       name: 'richText',
