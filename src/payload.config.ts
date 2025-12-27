@@ -1,7 +1,5 @@
-// storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
-
-import sharp from 'sharp' // sharp-import
+import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
@@ -71,7 +69,7 @@ export default buildConfig({
   editor: defaultLexical,
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || '',
+      connectionString: process.env.DATABASE_URL || '',
     },
   }),
   collections: [Pages, Posts, Media, Categories, Users],
@@ -82,10 +80,7 @@ export default buildConfig({
     defaultLocale: 'en',
     fallback: true,
   },
-  plugins: [
-    ...plugins,
-    // storage-adapter-placeholder
-  ],
+  plugins,
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
