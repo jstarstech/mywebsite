@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { Row } from '@/blocks/Row/config'
 
 export const Section: Block = {
   slug: 'section',
@@ -8,8 +9,7 @@ export const Section: Block = {
       type: 'blocks',
       name: 'row',
       label: 'Rows',
-      blocks: [],
-      blockReferences: ['row'],
+      blocks: [Row],
     },
     {
       name: 'bg',

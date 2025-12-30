@@ -64,7 +64,6 @@ export default buildConfig({
       ],
     },
   },
-  blocks: [Column, Row, Section, FormBlock, Code, Archive, MediaBlock, Banner, ContactsInfo],
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: postgresAdapter({

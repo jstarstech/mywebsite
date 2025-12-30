@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react'
 
-import type { Page } from '@/payload-types'
+import {
+  Page,
+  Section as SectionProps,
+  Row as RowProps,
+  Column as ColumnProps,
+  MediaBlock as MediaBlockProps,
+} from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
@@ -27,7 +33,7 @@ const blockComponents = {
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: Page['layout'] | SectionProps['row'] | RowProps['columns'] | ColumnProps['content']
 }> = (props) => {
   const { blocks } = props
 
@@ -40,7 +46,7 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[blockType as keyof typeof blockComponents]
 
             if (Block) {
               return (

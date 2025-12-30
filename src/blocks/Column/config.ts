@@ -1,3 +1,10 @@
+import { Archive } from '@/blocks/ArchiveBlock/config'
+import { Code } from '@/blocks/Code/config'
+import { FormBlock } from '@/blocks/Form/config'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { Banner } from '@/blocks/Banner/config'
+import { ContactsInfo } from '@/blocks/ContactsInfo/config'
+import { MainCallToAction } from '@/blocks/MainCallToAction/config'
 import { Block } from 'payload'
 
 export const Column: Block = {
@@ -8,8 +15,7 @@ export const Column: Block = {
       type: 'blocks',
       name: 'content',
       label: 'Content Blocks',
-      blocks: [],
-      blockReferences: ['archive', 'code', 'formBlock', 'mediaBlock', 'banner', 'contactInfo'],
+      blocks: [Archive, Code, FormBlock, MediaBlock, Banner, ContactsInfo, MainCallToAction],
       maxRows: 2,
     },
     {

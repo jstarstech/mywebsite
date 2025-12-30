@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { Column } from '@/blocks/Column/config'
 
 export const Row: Block = {
   slug: 'row',
@@ -33,8 +34,7 @@ export const Row: Block = {
       type: 'blocks',
       name: 'columns',
       label: 'Columns',
-      blocks: [],
-      blockReferences: ['column'],
+      blocks: [Column],
       maxRows: 4,
     },
   ],
