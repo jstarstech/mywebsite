@@ -8,14 +8,13 @@ import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 
 import { Media } from '../../components/Media'
 
-type Props = MediaBlockProps & {
+export type Props = MediaBlockProps & {
   breakout?: boolean
   captionClassName?: string
   className?: string
   enableGutter?: boolean
   imgClassName?: string
   staticImage?: StaticImageData
-  disableInnerContainer?: boolean
 }
 
 export const MediaBlock: React.FC<Props> = (props) => {
@@ -26,7 +25,6 @@ export const MediaBlock: React.FC<Props> = (props) => {
     imgClassName,
     media,
     staticImage,
-    disableInnerContainer,
   } = props
 
   let caption
@@ -50,15 +48,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
         />
       )}
       {caption && (
-        <div
-          className={cn(
-            'mt-4 mb-8 text-center',
-            {
-              container: !disableInnerContainer,
-            },
-            captionClassName,
-          )}
-        >
+        <div className={cn('mt-4 mb-8 text-center', captionClassName)}>
           <RichText data={caption} enableGutter={false} />
         </div>
       )}

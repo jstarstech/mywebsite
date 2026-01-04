@@ -5,7 +5,6 @@ import {
   Section as SectionProps,
   Row as RowProps,
   Column as ColumnProps,
-  MediaBlock as MediaBlockProps,
 } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
@@ -18,7 +17,7 @@ import { Section } from '@/blocks/Section/Component'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CodeBlock } from '@/blocks/Code/Component'
 import { ContactsInfoBlock } from './ContactsInfo/Component'
-
+// console.log(JSON.stringify(MediaBlockProps))
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -52,7 +51,7 @@ export const RenderBlocks: React.FC<{
               return (
                 <div className="my-8" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer />
+                  <Block {...block} />
                 </div>
               )
             }
