@@ -5,18 +5,16 @@ import React from 'react'
 import { Footer } from '@/Footer/Component'
 import { Providers } from '@/providers'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
-import { draftMode } from 'next/headers'
-import Link from 'next/link'
+// import { draftMode } from 'next/headers'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
-import LogoImg from '@/components/LogoImg'
 import { Header } from '@/Header/Component'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled } = await draftMode()
+  // const { isEnabled } = await draftMode()
 
   return (
     <html lang="en" suppressHydrationWarning>

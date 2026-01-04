@@ -17,7 +17,6 @@ export const Column = (props: ColumnProps) => {
 
   return (
     <div className={`flex flex-col grow basis-full sm:basis-1/2 ${basisVariant[columnWidth]} p-4`}>
-      {/* @ts-expect-error there may be some mismatch between the expected types here */}
       <RenderBlocks blocks={content} />
     </div>
   )

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ArrowLeft, Clock, Calendar, User, Linkedin, X, Facebook } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, User } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp, FaXTwitter } from 'react-icons/fa6'
 
 import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
@@ -12,9 +12,7 @@ import RichText from '@/components/RichText'
 import { Media } from '@/components/Media'
 
 import type { Post } from '@/payload-types'
-import config from '@/payload.config'
 import { generateMeta } from '@/utilities/generateMeta'
-import PageClient from './page.client'
 import { formatAuthors } from '@/utilities/formatAuthors'
 import Link from 'next/link'
 
@@ -45,7 +43,7 @@ type Args = {
 }
 
 export default async function Post({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
+  // const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)

@@ -14,15 +14,6 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import { Column } from './blocks/Column/config'
-import { Row } from './blocks/Row/config'
-import { Section } from './blocks/Section/config'
-import { FormBlock } from './blocks/Form/config'
-import { Code } from './blocks/Code/config'
-import { Archive } from './blocks/ArchiveBlock/config'
-import { MediaBlock } from './blocks/MediaBlock/config'
-import { Banner } from './blocks/Banner/config'
-import { ContactsInfo } from './blocks/ContactsInfo/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
