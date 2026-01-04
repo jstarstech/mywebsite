@@ -40,6 +40,7 @@ export const Card: React.FC<{
 
   return (
     <article
+      // eslint-disable-next-line react-hooks/refs
       ref={card.ref}
       className={cn(
         'bg-slate-800/50 backdrop-blur-sm rounded-lg overflow-hidden border border-purple-500/20 hover:border-purple-500/50 transition-all hover:transform hover:scale-105 flex flex-col',
@@ -56,6 +57,7 @@ export const Card: React.FC<{
       <div className="grow flex flex-col p-6">
         <h3 className="text-xl font-bold text-white mb-2">
           {titleToUse && (
+            // eslint-disable-next-line react-hooks/refs
             <Link className="not-prose" href={href} ref={link.ref}>
               {titleToUse}
             </Link>
