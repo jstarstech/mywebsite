@@ -11,8 +11,18 @@ export const Section = (props: SectionProps) => {
     'bg-white': 'bg-white text-gray-950',
   }
 
+  let bgColorClasses = 'bg-white'
+
+  if (bg !== null && bg !== undefined) {
+    if (bg === 'none') {
+      bgColorClasses = ''
+    } else {
+      bgColorClasses = bgColorVariants[bg]
+    }
+  }
+
   return (
-    <section className={`${bgColorVariants[bg || 'bg-white']} my-0`}>
+    <section className={`${bgColorClasses} my-0`}>
       {rows?.map((row) => (
         <Row key={row.id} {...row} />
       ))}
