@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useCallback, use, useState } from 'react'
+import React, { createContext, useCallback, use, useEffect, useState } from 'react'
 
 import type { Theme, ThemeContextType } from './types'
 
@@ -16,29 +16,9 @@ const initialContext: ThemeContextType = {
 const ThemeContext = createContext(initialContext)
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme | undefined>(() => {
-    if (canUseDOM) {
-      return document.documentElement.getAttribute('data-theme') as Theme
-    }
-
-    const preference = window.localStorage.getItem(themeLocalStorageKey)
-
-    let themeToSet: Theme = defaultTheme
-
-    if (themeIsValid(preference)) {
-      themeToSet = preference
-    } else {
-      const implicitPreference = getImplicitPreference()
-
-      if (implicitPreference) {
-        themeToSet = implicitPreference
-      }
-    }
-
-    document.documentElement.setAttribute('data-theme', themeToSet)
-
-    return themeToSet
-  })
+  const [theme, setThemeState] = useState<Theme | undefined>(
+    canUseDOM ? (document.documentElement.getAttribute('data-theme') as Theme) : undefined,
+  )
 
   const setTheme = useCallback((themeToSet: Theme | null) => {
     if (themeToSet === null) {
@@ -51,6 +31,25 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       window.localStorage.setItem(themeLocalStorageKey, themeToSet)
       document.documentElement.setAttribute('data-theme', themeToSet)
     }
+  }, [])
+
+  useEffect(() => {
+    let themeToSet: Theme = defaultTheme
+    const preference = window.localStorage.getItem(themeLocalStorageKey)
+
+    if (themeIsValid(preference)) {
+      themeToSet = preference
+    } else {
+      const implicitPreference = getImplicitPreference()
+
+      if (implicitPreference) {
+        themeToSet = implicitPreference
+      }
+    }
+
+    document.documentElement.setAttribute('data-theme', themeToSet)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setThemeState(themeToSet)
   }, [])
 
   return <ThemeContext value={{ setTheme, theme }}>{children}</ThemeContext>
