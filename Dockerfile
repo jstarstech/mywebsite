@@ -21,6 +21,14 @@ RUN \
 
 # Rebuild the source code only when needed
 FROM base AS builder
+
+ARG PAYLOAD_SECRET
+ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
+
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
+
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
